@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
+    <title>Find the Number Game</title>
+  </head>
+  <body>
+    <header>
+
+
+      <h1 id="header__main-header">
+        Guess the number between    
+        <span class="number border-down" ></span> -
+        <span class="number border-up"></span>
+      </h1>
+      <h1 id="header__warning-header">The guessed number must be between <span class="number border-down" ></span> -
+        <span class="number border-up" ></span></h1>
+
+
+      <h2 id="right-header"> </span> You have <span class="number" id="right"></span> left</h2>
+    </header>
+
+    <main>
+      <div id="main__input-continer">
+        <div class="main__input-wrapper">
+          <input type="number" name="number" id="number" />
+          <input type="button" value="CHECK" />
+        </div>
+        <div  class="header__image-wrapper">
+          <img id="first-page-img"  src="./images/magicHat1.png" alt="" />
+        </div>
+      </div>
+      <div id="result">
+        <div class="end" id="win">
+          <div class="end__image-wrapper">
+            </h1>
+            <img
+              class="end-image"
+              src="./images/congrats4.png"
+              alt="congrats"
+            />
+          </div>
+          <h2>
+            You have guessed my number in <span id="count" class="number"></span> turns <br />
+            The number was <span class="number picked-number"></span>
+          </h2>
+        </div>
+
+        <div class="end" id="lost">
+          <div class="end__image-wrapper">
+            <img
+              class="end-image"
+              src="./images/gameOver2.png"
+              alt="game over"
+            />
+          </div>
+          <h2>
+            You will make it next time !!! <br />
+            The number was <span class="number picked-number"></span>
+          </h2>
+        </div>
+        <button id="restart-button">Play Again</button>
+      </div>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>
