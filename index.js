@@ -69,7 +69,7 @@ const clickButtonFunc = () => {
       rightSpan.innerHTML = right;
   } else if (pickedNumber < guessInput.value && count != 7){
     count++;
-    right--;
+    right--; 
     borderUpSpan.forEach((e) => (e.innerHTML = guessInput.value));
     rightSpan.innerHTML = right;
 } else{
