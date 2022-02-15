@@ -98,6 +98,6 @@ guessInput.addEventListener("keyup", (event) => {
     }
   });
 
-restartButton.addEventListener("click", toLoad);
+restartButton.addEventListener("click", toLoad); 
 
 
