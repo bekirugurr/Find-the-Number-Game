@@ -51,24 +51,24 @@ const clickButtonFunc = () => {
     inputContainer.style.display = "none";
     result.style.display = "flex";
     resultLost.style.display = "none";
+    document.body.style.backgroundImage = "url(./images/fireWork2.png)"; 
     resultWin.style.display = "block";
     countSpan.innerHTML = count;
     guessInput.value = "";
     //seçilen alanın dışında bir sayı yazılırsa aşağıdaki blok çalışacak 
-  } else if (guessInput.value > borderUp || guessInput.value < borderDown) {  
+  } else if (+guessInput.value > borderUp || +guessInput.value < borderDown) {  
     mainHeader.style.display = "none";
     warningHeader.style.display = "block";
-    guessInput.value = "";
     return; 
     // tahmin olarak yazılan yası bilgisayarın tuttuğu sayıdan küçükse  aşağıdaki blok çalışacak
-  } else if (pickedNumber > guessInput.value && right != 1){
-      count++;
-      right--;
-      borderDown = guessInput.value
-      borderDownSpan.forEach((e) => (e.innerHTML = borderDown));
-      rightSpan.innerHTML = right;
-      guessInput.value = "";
-      return;
+  } else if (pickedNumber > +guessInput.value && right != 1){
+    count++;
+    right--; 
+    borderDown = guessInput.value;
+    borderDownSpan.forEach((e) => (e.innerHTML = borderDown));
+    rightSpan.innerHTML = right;
+    guessInput.value = "";
+    return;
       // tahmin olarak yazılan yası bilgisayarın tuttuğu sayıdan büyükse  aşağıdaki blok çalışacak
   } else if (pickedNumber < guessInput.value && right != 1){
     count++;
@@ -91,9 +91,13 @@ const clickButtonFunc = () => {
 checkButton.addEventListener("click", clickButtonFunc);
 
 // input number bölmesindeyken enter a basıldığında fonksiyonun çalışmasını sağlayan event handler 
+
 guessInput.addEventListener("keyup", (event) => {
     if (event.keyCode === 13) {
     clickButtonFunc();
     }
   });
-  restartButton.addEventListener("click", toLoad);
+
+restartButton.addEventListener("click", toLoad);
+
+
