@@ -30,7 +30,6 @@ const toLoad = () => {
   inputContainer.style.display = "block";
   initialPageImg.src = "./images/magicHat1.png";
   document.body.style.backgroundImage = "url()"; 
-
   pickedNumber = pickANumber();
   borderDown = 1;
   borderUp = 100;
