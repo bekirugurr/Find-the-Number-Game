@@ -114,3 +114,8 @@ h1, h2{
     font-size: 2.5rem ;
     letter-spacing: 0.2rem;
 }
+@media screen and (max-width : 615px){
+    .end__image-wrapper{
+        width: 95vw; 
+}
+}

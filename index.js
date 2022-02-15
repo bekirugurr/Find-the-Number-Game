@@ -23,7 +23,7 @@ let right = 7;
 function pickANumber() {
   return Math.round(Math.random() * 100);
 }
-
+ // Ekran yüklendiğinde veya play again e basıldığında çalışacak fonksiyon 
 const toLoad = () => {
   result.style.display = "none";
   header.style.display ="flex";
@@ -40,21 +40,12 @@ const toLoad = () => {
 }; 
 
 window.addEventListener("load",  toLoad);
-
-/* window.addEventListener("load", () => {
-  result.style.display = "none";
-  pickedNumber = pickANumber();
-  borderDown = 1;
-  borderUp = 100;
-  count = 1;
-  borderDownSpan.forEach((e) => (e.innerHTML = borderDown));
-  borderUpSpan.forEach((e) => (e.innerHTML = borderUp));
-  rightSpan.innerHTML = right;
-}); */
  
+// Butona basıldığında veya enter tuşuna basıldığında çalışacak fonksiyon 
 const clickButtonFunc = () => {
   initialPageImg.src = "./images/thinkingMan1.png";
   answerSpan.forEach((e) => (e.innerHTML = pickedNumber));
+  // Doğru bilindiğinde aşağıdaki if bloku çalışacak
   if (pickedNumber == guessInput.value) {
     header.style.display = "none";
     inputContainer.style.display = "none";
@@ -62,11 +53,14 @@ const clickButtonFunc = () => {
     resultLost.style.display = "none";
     resultWin.style.display = "block";
     countSpan.innerHTML = count;
+    guessInput.value = "";
+    //seçilen alanın dışında bir sayı yazılırsa aşağıdaki blok çalışacak 
   } else if (guessInput.value > borderUp || guessInput.value < borderDown) {  
     mainHeader.style.display = "none";
     warningHeader.style.display = "block";
     guessInput.value = "";
     return; 
+    // tahmin olarak yazılan yası bilgisayarın tuttuğu sayıdan küçükse  aşağıdaki blok çalışacak
   } else if (pickedNumber > guessInput.value && right != 1){
       count++;
       right--;
@@ -75,6 +69,7 @@ const clickButtonFunc = () => {
       rightSpan.innerHTML = right;
       guessInput.value = "";
       return;
+      // tahmin olarak yazılan yası bilgisayarın tuttuğu sayıdan büyükse  aşağıdaki blok çalışacak
   } else if (pickedNumber < guessInput.value && right != 1){
     count++;
     right--; 
@@ -90,15 +85,15 @@ const clickButtonFunc = () => {
     resultWin.style.display = "none";
     resultLost.style.display = "block";
     guessInput.value = "";
-
 }
 };
 
 checkButton.addEventListener("click", clickButtonFunc);
+
+// input number bölmesindeyken enter a basıldığında fonksiyonun çalışmasını sağlayan event handler 
 guessInput.addEventListener("keyup", (event) => {
     if (event.keyCode === 13) {
     clickButtonFunc();
     }
   });
-
   restartButton.addEventListener("click", toLoad);
