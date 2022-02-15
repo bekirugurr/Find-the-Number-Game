@@ -19,12 +19,29 @@ let pickedNumber = 0;
 let borderDown = 1;
 let borderUp = 100;
 let count = 0;
-let right = 7 - count;
+let right = 7;
 function pickANumber() {
   return Math.round(Math.random() * 100);
 }
 
-window.addEventListener("load", () => {
+const toLoad = () => {
+  result.style.display = "none";
+  header.style.display ="flex";
+  inputContainer.style.display = "block";
+  initialPageImg.src = "./images/magicHat1.png";
+  pickedNumber = pickANumber();
+  borderDown = 1;
+  borderUp = 100;
+  count = 1;
+  right= 7;
+  borderDownSpan.forEach((e) => (e.innerHTML = borderDown));
+  borderUpSpan.forEach((e) => (e.innerHTML = borderUp));
+  rightSpan.innerHTML = right;
+}; 
+
+window.addEventListener("load",  toLoad);
+
+/* window.addEventListener("load", () => {
   result.style.display = "none";
   pickedNumber = pickANumber();
   borderDown = 1;
@@ -33,22 +50,8 @@ window.addEventListener("load", () => {
   borderDownSpan.forEach((e) => (e.innerHTML = borderDown));
   borderUpSpan.forEach((e) => (e.innerHTML = borderUp));
   rightSpan.innerHTML = right;
-});
-
-const toLoad = () => {
-  result.style.display = "none";
-  header.style.display ="flex";
-  inputContainer.style.display = "block";
-  pickedNumber = pickANumber();
-  borderDown = 1;
-  borderUp = 100;
-  count = 0;
-  right= 7;
-  borderDownSpan.forEach((e) => (e.innerHTML = borderDown));
-  borderUpSpan.forEach((e) => (e.innerHTML = borderUp));
-  rightSpan.innerHTML = right;
-};
-
+}); */
+ 
 const clickButtonFunc = () => {
   initialPageImg.src = "./images/thinkingMan1.png";
   answerSpan.forEach((e) => (e.innerHTML = pickedNumber));
@@ -59,25 +62,34 @@ const clickButtonFunc = () => {
     resultLost.style.display = "none";
     resultWin.style.display = "block";
     countSpan.innerHTML = count;
-  } else if (guessInput.value > borderUp || guessInput < borderDown) {
+  } else if (guessInput.value > borderUp || guessInput.value < borderDown) {  
     mainHeader.style.display = "none";
     warningHeader.style.display = "block";
-  } else if (pickedNumber > guessInput.value && count != 7){
+    guessInput.value = "";
+    return; 
+  } else if (pickedNumber > guessInput.value && right != 1){
       count++;
       right--;
-      borderDownSpan.forEach((e) => (e.innerHTML = guessInput.value));
+      borderDown = guessInput.value
+      borderDownSpan.forEach((e) => (e.innerHTML = borderDown));
       rightSpan.innerHTML = right;
-  } else if (pickedNumber < guessInput.value && count != 7){
+      guessInput.value = "";
+      return;
+  } else if (pickedNumber < guessInput.value && right != 1){
     count++;
     right--; 
-    borderUpSpan.forEach((e) => (e.innerHTML = guessInput.value));
+    borderUp = guessInput.value;
+    borderUpSpan.forEach((e) => (e.innerHTML = borderUp));
     rightSpan.innerHTML = right;
+    guessInput.value = "";
+    return;
 } else{
     header.style.display = "none";
     inputContainer.style.display = "none";
     result.style.display = "flex";
     resultWin.style.display = "none";
     resultLost.style.display = "block";
+    guessInput.value = "";
 
 }
 };
@@ -88,4 +100,5 @@ guessInput.addEventListener("keyup", (event) => {
     clickButtonFunc();
     }
   });
-  restartButton.addEventListener("click", toLoad)
+
+  restartButton.addEventListener("click", toLoad);
