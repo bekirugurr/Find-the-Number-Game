@@ -26,9 +26,9 @@ main {
 header {
   padding-top: 1rem;
 }
-#header__warning-header {
+/* #header__warning-header {
   display: none;
-}
+} */
 h1 {
   margin-bottom: 1rem;
   font-size: 3rem;
@@ -123,8 +123,23 @@ h2 {
   font-size: 2.5rem;
   letter-spacing: 0.2rem;
 }
+#inner__out-of-range{
+background-color: rgba(178, 235, 86, 0.911);
+width: 30rem;
+margin: 2rem auto;
+border-radius: 35px;
+box-shadow: 0 0 15px 5px inset tomato;
+padding: 2rem;
+}
+#outer__out-of-range{
+  display: none;
+}
 @media screen and (max-width: 615px) {
   .end__image-wrapper {
     width: 95%;
+  }
+  #inner__out-of-range{
+    width: 90%;
+    padding: 1rem;
   }
 }; 

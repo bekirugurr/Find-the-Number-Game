@@ -1,7 +1,5 @@
 const header = document.querySelector("header");
 const inputContainer = document.getElementById("main__input-continer");
-const mainHeader = document.getElementById("header__main-header");
-const warningHeader = document.getElementById("header__warning-header");
 const result = document.getElementById("result");
 const resultWin = document.getElementById("win");
 const resultLost = document.getElementById("lost");
@@ -14,6 +12,8 @@ const countSpan = document.getElementById("count");
 const answerSpan = document.querySelectorAll(".picked-number");
 const initialPageImg = document.getElementById("first-page-img");
 const restartButton = document.getElementById("restart-button")
+const guessingNumberSpan = document.getElementById("guessing-number");
+const outOfRangeScreen = document.getElementById("outer__out-of-range")
 
 let pickedNumber = 0;
 let borderDown = 1;
@@ -38,6 +38,7 @@ const toLoad = () => {
   borderDownSpan.forEach((e) => (e.innerHTML = borderDown));
   borderUpSpan.forEach((e) => (e.innerHTML = borderUp));
   rightSpan.innerHTML = right;
+  guessInput.focus();
 }; 
 
 window.addEventListener("load",  toLoad);
@@ -58,8 +59,17 @@ const clickButtonFunc = () => {
     guessInput.value = "";
     //seçilen alanın dışında bir sayı yazılırsa aşağıdaki blok çalışacak 
   } else if (+guessInput.value > borderUp || +guessInput.value < borderDown) {  
-    mainHeader.style.display = "none";
-    warningHeader.style.display = "block";
+    guessingNumberSpan.innerHTML = +guessInput.value
+    outOfRangeScreen.style.display = "block";
+    document.querySelector("main").style.display = "none";
+    header.style.display = "none";
+    setTimeout(() => {
+      outOfRangeScreen.style.display = "none";
+      document.querySelector("main").style.display = "flex";
+    header.style.display = "flex";
+    guessInput.focus();
+    }, 2500);
+    guessInput.value = "";
     return; 
     // tahmin olarak yazılan yası bilgisayarın tuttuğu sayıdan küçükse  aşağıdaki blok çalışacak
   } else if (pickedNumber > +guessInput.value && right != 1){
@@ -100,5 +110,3 @@ guessInput.addEventListener("keyup", (event) => {
   });
 
 restartButton.addEventListener("click", toLoad); 
-
-

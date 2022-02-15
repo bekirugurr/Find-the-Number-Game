@@ -14,15 +14,11 @@
     <header>
 
 
-      <h1 id="header__main-header">
+      <h1>
         Guess the number between    
         <span class="number border-down" ></span> -
         <span class="number border-up"></span>
       </h1>
-      <h1 id="header__warning-header">The guessed number must be between <span class="number border-down" ></span> -
-        <span class="number border-up" ></span></h1>
-
-
       <h2 id="right-header"> </span> You have <span class="number" id="right"></span> left</h2>
     </header>
 
@@ -68,6 +64,16 @@
         <button id="restart-button">Play Again</button>
       </div>
     </main> 
+
+    <div id="outer__out-of-range">
+      <div id="inner__out-of-range">
+<h1>Out of range !!!</h1> 
+<h2>
+You entered <span id="guessing-number" class="number"></span>. <br>
+Guessing number must be between  <span class="number border-down" ></span> -
+<span class="number border-up"></span></h2>
+</div>
+    </div>
 
     <script src="index.js"></script>
   </body>
